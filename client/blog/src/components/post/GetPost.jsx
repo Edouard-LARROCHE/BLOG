@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const FormPost = () => {
+const GetPost = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -30,4 +30,4 @@ const FormPost = () => {
   );
 };
 
-export default FormPost;
+export default GetPost;
