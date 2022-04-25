@@ -1,9 +1,10 @@
 import React from 'react';
+import FormPost from './components/FormPost';
 
 const App = () => {
   return (
     <div>
-      <h1>BLOG</h1>
+      <FormPost />
     </div>
   );
 };
