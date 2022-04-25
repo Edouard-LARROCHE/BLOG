@@ -1,9 +1,12 @@
 import React from 'react';
+import FormPost from './components/post/FormPost';
+import GetPost from './components/post/GetPost';
 
 const App = () => {
   return (
     <div>
-      <h1>BLOG</h1>
+      <FormPost />
+      <GetPost />
     </div>
   );
 };
