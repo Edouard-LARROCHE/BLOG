@@ -7,7 +7,7 @@
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client/blog && npm run build",
-    "install-front": "cd client && npm install",
+    "install-client": "cd client/blog && npm install",
     "heroku-postbuild": "npm run install-client/blog && npm run build"
   },
   "engines": {
