@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { createPost } from '../../redux/actions/postAction';
 
 const FormPost = () => {
   const [title, setTitle] = useState('');
@@ -8,20 +10,20 @@ const FormPost = () => {
   const [content, setContent] = useState('');
   const data = { title, subtitle, author, content };
 
+  const dispatch = useDispatch();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await axios
-      .post('http://localhost:5500/posts', data)
-      .then(() => {
-        setTitle('');
-        setSubtitle('');
-        setAuthor('');
-        setContent('');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    try {
+      dispatch(createPost({ ...data }));
+      setTitle('');
+      setSubtitle('');
+      setAuthor('');
+      setContent('');
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
