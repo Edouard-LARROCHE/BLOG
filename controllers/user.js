@@ -1,6 +1,18 @@
 const UserModel = require('../models/user');
 const ObjectID = require('mongoose').Types.ObjectId;
 
+const createUser = async (req, res) => {
+  const newUser = UserModel(req.body);
+  try {
+    await newUser.save();
+    res.status(201).json(newUser);
+  } catch (error) {
+    res.status(409).json({
+      message: error.message,
+    });
+  }
+};
+
 const getAllUsers = async (req, res) => {
   const users = await UserModel.find().select('-password');
   res.status(200).json(users);
@@ -84,4 +96,4 @@ const unfollow = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, userInfo, updateUser, deleteUser, follow, unfollow };
+module.exports = { createUser, getAllUsers, userInfo, updateUser, deleteUser, follow, unfollow };
