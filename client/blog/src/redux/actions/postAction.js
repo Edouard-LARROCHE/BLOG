@@ -7,7 +7,7 @@ export const fetchPosts = () => async (dispatch) => {
     const { data } = await api.fetchPosts();
     dispatch({ type: types.FETCH_POSTS_SUCCESS, payload: data });
   } catch (error) {
-    dispatch({ type: types.FETCH_POSTS_FAIL, payload: error.message });
+    dispatch({ payload: error });
   }
 };
 
@@ -17,7 +17,7 @@ export const fetchSinglePost = (id) => async (dispatch) => {
     const { data } = await api.fetchSinglePost(id);
     dispatch({ type: types.FETCH_SINGLE_POST_SUCCESS, payload: data });
   } catch (error) {
-    dispatch({ type: types.FETCH_SINGLE_POST_FAIL, payload: error.message });
+    dispatch({ payload: error });
   }
 };
 
@@ -30,7 +30,7 @@ export const createPost = (post) => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    dispatch({ type: types.CREATE_POST_FAIL, payload: error.message });
+    dispatch({ payload: error });
   }
 };
 
@@ -43,7 +43,7 @@ export const updatePost = (id, post) => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    dispatch({ type: types.UPDATE_POST_FAIL, payload: error.message });
+    dispatch({ payload: error });
   }
 };
 
@@ -56,6 +56,6 @@ export const deletePost = (id) => async (dispatch) => {
       payload: data._id,
     });
   } catch (error) {
-    dispatch({ type: types.DELETE_POST_FAIL, payload: error.message });
+    dispatch({ payload: error });
   }
 };

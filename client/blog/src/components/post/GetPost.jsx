@@ -1,30 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPosts } from '../../redux/actions/postAction';
+import Post from './Post';
 
 const GetPost = () => {
-  const [data, setData] = useState([]);
+  const postsData = useSelector((state) => state.posts.posts);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      await axios
-        .get('http://localhost:5500/posts', data)
-        .then((res) => {
-          setData(res.data);
-          console.log(res.data);
-        })
-        .catch((err) => console.log(err));
-    };
-
-    fetchData();
-  }, []);
+    dispatch(fetchPosts());
+  }, [dispatch]);
 
   return (
     <div>
-      <h1>BLOG</h1>
-      {data.map((index) => (
-        <div key={index._id}>
-          <p> {index.title} </p>
-        </div>
+      <h1>POSTS</h1>
+      {postsData.map((index) => (
+        <Post key={index._id} title={index.title} subtitle={index.subtitle} author={index.author} content={index.content} />
       ))}
     </div>
   );
