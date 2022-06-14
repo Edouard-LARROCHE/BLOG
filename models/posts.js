@@ -12,9 +12,7 @@ const postSchema = mongoose.Schema(
     },
     subtitle: {
       type: String,
-      required: true,
     },
-
     content: {
       type: String,
       required: true,

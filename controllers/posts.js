@@ -1,5 +1,24 @@
 const { PostModel } = require('../models/posts');
 const { UserModel } = require('../models/user');
+const ObjectID = require('mongoose').Types.ObjectId;
+
+const createPost = async (req, res) => {
+  const newPost = new PostModel({
+    posterId: req.body.posterId,
+    title: req.body.title,
+    subtitle: req.body.subtitle,
+    content: req.body.content,
+    likers: [],
+    comments: [],
+  });
+
+  try {
+    const post = await newPost.save();
+    return res.status(201).json(post);
+  } catch (err) {
+    return res.status(400).send(err);
+  }
+};
 
 const getPosts = async (req, res) => {
   try {
@@ -19,18 +38,6 @@ const getSinglePost = async (req, res) => {
     res.status(200).json(post);
   } catch (error) {
     res.status(404).json({
-      message: error.message,
-    });
-  }
-};
-
-const createPost = async (req, res) => {
-  const newPost = new PostModel(req.body);
-  try {
-    await newPost.save();
-    res.status(201).json(newPost);
-  } catch (error) {
-    res.status(409).json({
       message: error.message,
     });
   }
@@ -117,4 +124,4 @@ const unlikePost = async (req, res) => {
   }
 };
 
-module.exports = { getPosts, getSinglePost, createPost, updatePost, deletePost, likePost, unlikePost };
+module.exports = { createPost, getPosts, getSinglePost, updatePost, deletePost, likePost, unlikePost };
