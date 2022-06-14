@@ -2,12 +2,34 @@ const mongoose = require('mongoose');
 
 const postSchema = mongoose.Schema(
   {
-    title: String,
-    subtitle: String,
-    author: String,
-    content: String,
-    tag: String,
-    image: String,
+    title: {
+      type: String,
+      required: true,
+    },
+    subtitle: {
+      type: String,
+      required: true,
+    },
+
+    content: {
+      type: String,
+      required: true,
+    },
+    likers: {
+      type: [String],
+      required: true,
+    },
+    comments: {
+      type: [
+        {
+          commenterId: String,
+          commenterPseudo: String,
+          text: String,
+          timestamp: Number,
+        },
+      ],
+      required: true,
+    },
   },
   {
     timestamps: true,
@@ -17,6 +39,6 @@ const postSchema = mongoose.Schema(
   },
 );
 
-const Post = mongoose.model('Post', postSchema);
+const PostModel = mongoose.model('Post', postSchema);
 
-module.exports = { Post };
+module.exports = { PostModel };
