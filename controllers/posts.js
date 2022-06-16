@@ -1,5 +1,5 @@
 const { PostModel } = require('../models/posts');
-const { UserModel } = require('../models/user');
+const UserModel = require('../models/user');
 const ObjectID = require('mongoose').Types.ObjectId;
 
 const createPost = async (req, res) => {
@@ -22,7 +22,7 @@ const createPost = async (req, res) => {
 
 const getPosts = async (req, res) => {
   try {
-    const posts = await PostModel.find();
+    const posts = await PostModel.find().sort({ createdAt: -1 });
     res.status(200).json(posts);
   } catch (error) {
     res.status(404).json({
@@ -72,7 +72,7 @@ const likePost = async (req, res) => {
   if (!ObjectID.isValid(req.params.id)) return res.status(400).send('ID unknown : ' + req.params.id);
 
   try {
-    await PostModel.findByIdAndUpdate(
+    PostModel.findByIdAndUpdate(
       req.params.id,
       {
         $addToSet: { likers: req.body.id },
@@ -88,9 +88,7 @@ const likePost = async (req, res) => {
         $addToSet: { likes: req.params.id },
       },
       { new: true },
-    )
-      .then((data) => res.send(data))
-      .catch((err) => res.status(500).send({ message: err }));
+    );
   } catch (err) {
     return res.status(400).send(err);
   }
@@ -100,7 +98,7 @@ const unlikePost = async (req, res) => {
   if (!ObjectID.isValid(req.params.id)) return res.status(400).send('ID unknown : ' + req.params.id);
 
   try {
-    await PostModel.findByIdAndUpdate(
+    PostModel.findByIdAndUpdate(
       req.params.id,
       {
         $pull: { likers: req.body.id },
@@ -116,9 +114,7 @@ const unlikePost = async (req, res) => {
         $pull: { likes: req.params.id },
       },
       { new: true },
-    )
-      .then((data) => res.send(data))
-      .catch((err) => res.status(500).send({ message: err }));
+    );
   } catch (err) {
     return res.status(400).send(err);
   }
