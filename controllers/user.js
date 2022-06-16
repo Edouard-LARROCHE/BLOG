@@ -13,8 +13,20 @@ const createUser = async (req, res) => {
   }
 };
 
+const getSingleUser = async (req, res) => {
+  try {
+    const { id: _id } = req.params;
+    const user = await UserModel.findById(_id);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
+    });
+  }
+};
+
 const getAllUsers = async (req, res) => {
-  const users = await UserModel.find().select('-password');
+  const users = await UserModel.find();
   res.status(200).json(users);
 };
 
@@ -96,4 +108,4 @@ const unfollow = async (req, res) => {
   }
 };
 
-module.exports = { createUser, getAllUsers, userInfo, updateUser, deleteUser, follow, unfollow };
+module.exports = { createUser, getSingleUser, getAllUsers, userInfo, updateUser, deleteUser, follow, unfollow };
