@@ -74,18 +74,12 @@ const follow = async (req, res) => {
   if (!ObjectID.isValid(req.params.id) || !ObjectID.isValid(req.body.idToFollow)) return res.status(400).send('ID unknown : ' + req.params.id);
 
   try {
-    await UserModel.findByIdAndUpdate(
-      req.params.id,
-      { $addToSet: { following: req.body.idToFollow } },
-      { new: true, upsert: true }.then((data) => res.send(data)).catch((err) => res.status(500).send({ message: err })),
-    ),
-      await UserModel.findByIdAndUpdate(
-        req.body.idToFollow,
-        { $addToSet: { followers: req.params.id } },
-        { new: true, upsert: true }.then((data) => res.send(data)).catch((err) => res.status(500).send({ message: err })),
-      );
+    UserModel.findByIdAndUpdate(req.params.id, { $addToSet: { following: req.body.idToFollow } }, { new: true, upsert: true })
+      .then((data) => res.send(data))
+      .catch((err) => res.status(500).send({ message: err })),
+      await UserModel.findByIdAndUpdate(req.body.idToFollow, { $addToSet: { followers: req.params.id } }, { new: true, upsert: true });
   } catch (err) {
-    return res.status(500).json({ message: err });
+    return res.status(500).send({ message: err });
   }
 };
 
