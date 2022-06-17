@@ -1,14 +1,13 @@
 import React from 'react';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { setPostsData } from '../../feature-redux/posts.slice';
+import { getPosts } from '../../feature-redux/posts.slice';
 
 const GetPost = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get('http://localhost:5500/posts').then((res) => dispatch(setPostsData(res.data)));
+    dispatch(getPosts());
   }, [dispatch]);
 
   return (
