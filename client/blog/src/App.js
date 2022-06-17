@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { UidContext } from './AppContext';
 import axios from 'axios';
 // REDUX
-import FormPost from './components/post/FormPost';
-import GetPost from './components/post/GetPost';
+import FormPost from './components/Post/FormPost';
+import GetPost from './components/Post/GetPost';
 import { useDispatch } from 'react-redux';
 import { getUserData } from './feature-redux/user.slice';
 
