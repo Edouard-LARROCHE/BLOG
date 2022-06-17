@@ -1,22 +1,19 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchPosts } from '../../redux/actions/postAction';
-import Post from './Post';
+import React from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { setPostsData } from '../../feature-redux/posts.slice';
 
 const GetPost = () => {
-  const postsData = useSelector((state) => state.posts.posts);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPosts());
+    axios.get('http://localhost:5500/posts').then((res) => dispatch(setPostsData(res.data)));
   }, [dispatch]);
 
   return (
     <div>
       <h1>POSTS</h1>
-      {postsData.map((index) => (
-        <Post key={index._id} title={index.title} subtitle={index.subtitle} author={index.author} content={index.content} />
-      ))}
     </div>
   );
 };
