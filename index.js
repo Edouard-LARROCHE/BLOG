@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
 require('./config/db');
 
@@ -21,6 +22,7 @@ const corsOption = {
 
 app.use(cors(corsOption));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.get('*', checkUser);
 app.get('/jwtid', requireAuth, (req, res) => {

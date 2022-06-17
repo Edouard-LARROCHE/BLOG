@@ -1,5 +1,6 @@
-const { UserModel } = require('../models/user');
+const UserModel = require('../models/user');
 const jwt = require('jsonwebtoken');
+const { signUpErrors, signInErrors } = require('../utils/errors');
 
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.JWTPRIVATEKEY, {
@@ -8,10 +9,10 @@ const createToken = (id) => {
 };
 
 const signUp = async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { pseudo, email, password } = req.body;
 
   try {
-    const user = await UserModel.create({ firstName, lastName, email, password });
+    const user = await UserModel.create({ pseudo, email, password });
     res.status(201).json({ user: user._id });
   } catch (err) {
     const errors = signUpErrors(err);
