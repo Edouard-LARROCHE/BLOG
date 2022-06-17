@@ -5,7 +5,7 @@ import axios from 'axios';
 import FormPost from './components/post/FormPost';
 import GetPost from './components/post/GetPost';
 import { useDispatch } from 'react-redux';
-import { setUserData } from './feature-redux/user.slice';
+import { getUserData } from './feature-redux/user.slice';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const App = () => {
     };
     fetchToken();
 
-    if (uid) dispatch(setUserData(uid));
+    if (uid) dispatch(getUserData(uid));
   }, [dispatch, uid]);
 
   return (
