@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { UidContext } from './AppContext';
 import axios from 'axios';
+// REDUX
 import FormPost from './components/post/FormPost';
 import GetPost from './components/post/GetPost';
+import { useDispatch } from 'react-redux';
+import { setUserData } from './feature-redux/user.slice';
 
 const App = () => {
+  const dispatch = useDispatch();
   const [uid, setUid] = useState(null);
 
   useEffect(() => {
@@ -20,7 +24,9 @@ const App = () => {
         .catch((err) => console.log(err));
     };
     fetchToken();
-  }, []);
+
+    if (uid) dispatch(setUserData(uid));
+  }, [dispatch, uid]);
 
   return (
     <UidContext.Provider value={uid}>
