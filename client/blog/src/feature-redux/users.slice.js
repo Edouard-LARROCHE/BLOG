@@ -7,11 +7,20 @@ export const usersSlice = createSlice({
     users: null,
   },
   reducers: {
-    setUsersData: (state, action) => {
+    getUsersData: (state, action) => {
       state.users = action.payload;
     },
   },
 });
 
-export const { setUsersData } = usersSlice.actions;
+export const getUSers = () => async (dispatch) => {
+  try {
+    const res = await axios.get(`${process.env.REACT_APP_API}/user`);
+    dispatch(getUsersData(res.data));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const { getUsersData } = usersSlice.actions;
 export default usersSlice.reducer;
