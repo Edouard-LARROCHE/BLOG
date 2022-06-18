@@ -6,6 +6,7 @@ import GetPost from './components/Post/GetPost';
 // REDUX
 import { useDispatch } from 'react-redux';
 import { getUserData } from './feature-redux/user.slice';
+import Register from './components/Log/Register';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -21,11 +22,9 @@ const App = () => {
         .then((res) => {
           setUid(res.data);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log('No token ' + err));
     };
     fetchToken();
-
-    console.log(uid);
 
     if (uid) dispatch(getUserData(uid));
   }, [dispatch, uid]);
@@ -33,6 +32,7 @@ const App = () => {
   return (
     <UidContext.Provider value={uid}>
       <div>
+        <Register />
         <Login />
         <GetPost />
       </div>
