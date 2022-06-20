@@ -6,16 +6,12 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  // const handleChange = ({ currentTarget: input }) => {
-  //   setData({ ...data, [input.name]: input.value });
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     axios({
       method: 'post',
-      url: 'http://localhost:5500/user/login',
+      url: `${process.env.REACT_APP_API}/user/login`,
       withCredentials: true,
       data: {
         email,

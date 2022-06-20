@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import Router from './Routes';
 import { UidContext } from './AppContext';
 import axios from 'axios';
-import Login from './components/Log/Login';
-import GetPost from './components/Post/GetPost';
 // REDUX
 import { useDispatch } from 'react-redux';
 import { getUser } from './feature-redux/user.slice';
-import Register from './components/Log/Register';
-import Logout from './components/Log/Logout';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -17,7 +14,7 @@ const App = () => {
     const fetchToken = async () => {
       await axios({
         method: 'get',
-        url: `http://localhost:5500/jwtid`,
+        url: `${process.env.REACT_APP_API}/jwtid`,
         withCredentials: true,
       })
         .then((res) => {
@@ -32,12 +29,7 @@ const App = () => {
 
   return (
     <UidContext.Provider value={uid}>
-      <div>
-        <Register />
-        <Login />
-        <Logout />
-        <GetPost />
-      </div>
+      <Router />
     </UidContext.Provider>
   );
 };

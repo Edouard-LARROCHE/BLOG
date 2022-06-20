@@ -27,7 +27,7 @@ const Register = () => {
     } else {
       await axios({
         method: 'post',
-        url: `http://localhost:5500/user/register`,
+        url: `${process.env.REACT_APP_API}/user/register`,
         data: {
           pseudo,
           email,
