@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 require('./config/db');
-const path = require('path');
 
 const { checkUser, requireAuth } = require('./middleware/auth');
 const postRoutes = require('./routes/posts');
@@ -23,6 +22,7 @@ const corsOption = {
 
 app.use(cors(corsOption));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.get('*', checkUser);
@@ -32,9 +32,5 @@ app.get('/jwtid', requireAuth, (req, res) => {
 
 app.use('/posts', postRoutes);
 app.use('/user', userRoutes);
-
-app.get('/*', (_, res) => {
-  res.sendFile(path.join(__dirname, './client/blog/build/index.html'));
-});
 
 app.listen(PORT, () => console.log(`Server started: ${PORT}`));
