@@ -23,7 +23,7 @@ const Logout = () => {
 
   return (
     <div>
-      <button onClick={logout}>deconexion</button>
+      <img src='./assets/SVG/logout.svg' alt='logout' onClick={logout} />
     </div>
   );
 };
