@@ -7,6 +7,7 @@ import GetPost from './components/Post/GetPost';
 import { useDispatch } from 'react-redux';
 import { getUser } from './feature-redux/user.slice';
 import Register from './components/Log/Register';
+import Logout from './components/Log/Logout';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const App = () => {
       <div>
         <Register />
         <Login />
+        <Logout />
         <GetPost />
       </div>
     </UidContext.Provider>
