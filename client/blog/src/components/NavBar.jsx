@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { UidContext } from '../AppContext';
 import Logout from './Log/Logout';
 
 const NavBar = () => {
   const uid = useContext(UidContext);
+  const userConnectData = useSelector((state) => state.user.user.pseudo);
 
   return (
     <div>
@@ -13,7 +15,7 @@ const NavBar = () => {
       {uid ? (
         <ul>
           <li>
-            <h5>Bienvenue ...</h5>
+            <h5>Bienvenue {userConnectData}</h5>
           </li>
           <li>
             <Logout />
