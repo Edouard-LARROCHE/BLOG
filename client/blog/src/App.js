@@ -14,11 +14,8 @@ const App = () => {
 
   useEffect(() => {
     const fetchToken = async () => {
-      await axios({
-        method: 'get',
-        url: `${process.env.REACT_APP_API}/jwtid`,
-        withCredentials: true,
-      })
+      await axios
+        .get(`${process.env.REACT_APP_API}/jwtid`)
         .then((res) => {
           setUid(res.data);
         })
