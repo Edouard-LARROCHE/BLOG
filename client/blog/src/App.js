@@ -5,7 +5,7 @@ import Login from './components/Log/Login';
 import GetPost from './components/Post/GetPost';
 // REDUX
 import { useDispatch } from 'react-redux';
-import { getUserData } from './feature-redux/user.slice';
+import { getUser } from './feature-redux/user.slice';
 import Register from './components/Log/Register';
 
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
     };
     fetchToken();
 
-    if (uid) dispatch(getUserData(uid));
+    if (uid) dispatch(getUser(uid));
   }, [dispatch, uid]);
 
   return (
