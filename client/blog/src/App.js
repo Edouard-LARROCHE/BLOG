@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Router from './Routes';
+import Router from './routes/Routes';
 import { UidContext } from './AppContext';
 import axios from 'axios';
 // REDUX
