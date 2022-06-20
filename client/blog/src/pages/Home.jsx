@@ -6,7 +6,7 @@ import GetPost from '../components/Post/GetPost';
 
 const Home = () => {
   return (
-    <div>
+    <div className='home-blog'>
       <Register />
       <Login />
       <Logout />
