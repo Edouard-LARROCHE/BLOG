@@ -23,7 +23,7 @@ const Logout = () => {
 
   return (
     <div>
-      <img src='./assets/SVG/logout.svg' alt='logout' onClick={logout} />
+      <img src='./assets/SVG/logout.svg' alt='logout' onClick={logout} style={{ cursor: 'pointer' }} />
     </div>
   );
 };

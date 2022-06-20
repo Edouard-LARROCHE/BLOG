@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { UidContext } from '../AppContext';
 import Logout from './Log/Logout';
 
@@ -19,7 +20,9 @@ const NavBar = () => {
           </li>
         </ul>
       ) : (
-        <img src='./assets/SVG/login.svg' alt='login' />
+        <Link to='/log'>
+          <img src='./assets/SVG/login.svg' alt='login' />
+        </Link>
       )}
     </div>
   );
