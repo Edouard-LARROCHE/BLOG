@@ -1,0 +1,10 @@
+.logout-popup {
+  opacity: 0;
+}
+.logout {
+  &:hover {
+    .logout-popup {
+      opacity: 1;
+    }
+  }
+}

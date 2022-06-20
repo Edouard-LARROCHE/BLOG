@@ -18,7 +18,12 @@ const NavBar = () => {
             <h5>Bienvenue {userConnectData}</h5>
           </li>
           <li>
-            <Logout />
+            <div className='logout'>
+              <Logout />
+            </div>
+            <div className='logout-popup'>
+              <p>Logout</p>
+            </div>
           </li>
         </ul>
       ) : (
