@@ -11,7 +11,6 @@ const NavBar = () => {
 
   return (
     <div className='navBar'>
-      {/* <img src='./assets/ICONS/logo.png' alt='logo-blog' style={{ width: '80px' }} /> */}
       <h2>Stack-BLOG</h2>
       {uid ? (
         <div className='user-connect'>
