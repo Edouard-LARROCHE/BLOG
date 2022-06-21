@@ -1,4 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+$font1: 'Bebas Neue', cursive;
+
+/********* COLOR ************/
+
+$color-1: #f6fbf8;
+$color-2: #e5e5db;
+$color-3: #d4d5cd;
+$color-4: #fcfaf7;
+
+$white: #ddd;
+$black: #333;
 $background: #0d1117;
+
+/************** SETUP *****************/
 
 * {
   box-sizing: border-box;
@@ -6,5 +21,25 @@ $background: #0d1117;
   padding: 0;
   scroll-behavior: smooth;
   user-select: none;
-  // background: $background;
+  background: $background;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: $color-4;
+}
+
+p {
+  font-size: small;
+}
+
+h2 {
+  font-family: $font1;
+  letter-spacing: 3px;
+  font-style: italic;
+  font-weight: lighter;
 }

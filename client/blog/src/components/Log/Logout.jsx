@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import cookie from 'js-cookie';
 
 const Logout = () => {
+  const [popupOut, setPopupOut] = useState('popup');
+
   const removeCookie = (key) => {
     if (window !== 'undefined') {
       cookie.remove(key, { expires: 1 });
@@ -22,8 +24,16 @@ const Logout = () => {
   };
 
   return (
-    <div>
-      <img src='./assets/SVG/logout.svg' alt='logout' onClick={logout} style={{ cursor: 'pointer' }} />
+    <div className={popupOut}>
+      <img
+        src='./assets/SVG/logout.svg'
+        alt='logout'
+        onClick={logout}
+        style={{ width: '30px', marginTop: '20px', cursor: 'pointer' }}
+        onMouseOver={() => setPopupOut('popup-after')}
+        onMouseLeave={() => setPopupOut('popup')}
+      />
+      <p>Se déconnecter</p>
     </div>
   );
 };
