@@ -11,17 +11,18 @@ $color-4: #fcfaf7;
 
 $white: #ddd;
 $black: #333;
-$background: #0d1117;
+$background-1: #0d1117;
+$background-2: #161b22;
 
 /************** SETUP *****************/
 
-* {
+body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
   user-select: none;
-  background: $background;
+  background: $background-1;
 }
 
 h1,

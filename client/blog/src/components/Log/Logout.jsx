@@ -29,7 +29,7 @@ const Logout = () => {
         src='./assets/SVG/logout.svg'
         alt='logout'
         onClick={logout}
-        style={{ width: '30px', marginTop: '20px', cursor: 'pointer' }}
+        style={{ width: '30px', cursor: 'pointer', background: '#161b22' }}
         onMouseOver={() => setPopupOut('popup-after')}
         onMouseLeave={() => setPopupOut('popup')}
       />

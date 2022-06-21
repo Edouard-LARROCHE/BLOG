@@ -2,44 +2,35 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background: $background-2;
+}
 
-  .user-connect {
-    display: flex;
-    align-items: center;
+.user-connect {
+  display: flex;
 
-    // h5 {
-    //   transform: translateY(8px);
-    //   margin-right: 15px;
-    // }
+  h5 {
+    transform: translate(-15px, 8px);
   }
 }
 
 .popup {
-  width: 50px;
+  position: relative;
+  top: 23px;
 
   p {
-    transform: translateX(-35px);
-    width: 95px;
+    transform: translate(-35px, -10px);
+    width: 115px;
     opacity: 0;
-    border: 1px solid;
-    padding: 3px;
-    border-radius: 2px;
-    background: $color-4;
-    color: $black;
   }
 }
 
 .popup-after {
-  width: 50px;
+  position: relative;
+  top: 23px;
 
   p {
-    transform: translateX(-35px);
-    width: 95px;
+    transform: translate(-35px, -10px);
+    width: 115px;
     opacity: 1;
-    border: 1px solid;
-    padding: 3px;
-    border-radius: 2px;
-    background: $color-4;
-    color: $black;
   }
 }
