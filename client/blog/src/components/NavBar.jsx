@@ -11,8 +11,8 @@ const NavBar = () => {
   const [popupLog, setPopupLog] = useState('log-popup');
 
   return (
-    <div>
-      <img src='./assets/ICONS/logo.png' alt='logo-blog' style={{ width: '80px' }} />
+    <div className='navBar'>
+      {/* <img src='./assets/ICONS/logo.png' alt='logo-blog' style={{ width: '80px' }} /> */}
       <h2>Stack-BLOG</h2>
       {uid ? (
         <ul>
@@ -29,6 +29,7 @@ const NavBar = () => {
             <img
               src='./assets/SVG/login.svg'
               alt='login'
+              style={{ width: '30px', marginTop: '20px' }}
               onMouseOver={() => setPopupLog('log-popup-after')}
               onMouseLeave={() => setPopupLog('log-popup')}
             />

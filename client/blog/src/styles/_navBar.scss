@@ -1,8 +1,21 @@
+.navBar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .log-popup {
   width: 50px;
 
   p {
+    transform: translateX(-35px);
+    width: 95px;
     opacity: 0;
+    border: 1px solid;
+    padding: 3px;
+    border-radius: 2px;
+    background: $color-4;
+    color: $black;
   }
 }
 
@@ -10,6 +23,13 @@
   width: 50px;
 
   p {
+    transform: translateX(-35px);
+    width: 95px;
     opacity: 1;
+    border: 1px solid;
+    padding: 3px;
+    border-radius: 2px;
+    background: $color-4;
+    color: $black;
   }
 }
