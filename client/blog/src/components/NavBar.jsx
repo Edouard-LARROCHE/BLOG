@@ -6,7 +6,7 @@ import Logout from './Log/Logout';
 
 const NavBar = () => {
   const uid = useContext(UidContext);
-  const userConnectData = useSelector((state) => state.user.user.pseudo);
+  const userConnectData = useSelector((state) => state.user);
 
   return (
     <div>
@@ -15,7 +15,7 @@ const NavBar = () => {
       {uid ? (
         <ul>
           <li>
-            <h5>Bienvenue {userConnectData}</h5>
+            <h5>Bienvenue {userConnectData.pseudo}</h5>
           </li>
           <li>
             <div className='logout'>
