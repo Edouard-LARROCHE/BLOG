@@ -3,43 +3,34 @@
   justify-content: space-around;
   align-items: center;
   background: $background-2;
+}
 
-  h2 {
-    background: $background-2;
-  }
+.user-connect {
+  display: flex;
 
-  .user-connect {
-    display: flex;
-    align-items: center;
-    background: $background-2;
-
-    h5 {
-      margin-right: 15px;
-      background: $background-2;
-    }
+  h5 {
+    transform: translate(-15px, 8px);
   }
 }
 
 .popup {
-  width: 50px;
-  background: $background-2;
+  position: relative;
+  top: 23px;
 
   p {
-    transform: translateX(-35px);
+    transform: translate(-35px, -10px);
     width: 115px;
     opacity: 0;
-    background: $background-2;
   }
 }
 
 .popup-after {
-  width: 50px;
-  background: $background-2;
+  position: relative;
+  top: 23px;
 
   p {
-    transform: translateX(-35px);
+    transform: translate(-35px, -10px);
     width: 115px;
     opacity: 1;
-    background: $background-2;
   }
 }
