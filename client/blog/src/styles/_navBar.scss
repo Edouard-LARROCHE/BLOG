@@ -2,9 +2,19 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  .user-connect {
+    display: flex;
+    align-items: center;
+
+    // h5 {
+    //   transform: translateY(8px);
+    //   margin-right: 15px;
+    // }
+  }
 }
 
-.log-popup {
+.popup {
   width: 50px;
 
   p {
@@ -19,7 +29,7 @@
   }
 }
 
-.log-popup-after {
+.popup-after {
   width: 50px;
 
   p {
