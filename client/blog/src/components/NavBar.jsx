@@ -10,7 +10,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <img src='' alt='logo-blog' />
+      <img src='./assets/ICONS/logo.png' alt='logo-blog' style={{ width: '80px' }} />
       <h2>Stack-BLOG</h2>
       {uid ? (
         <ul>
