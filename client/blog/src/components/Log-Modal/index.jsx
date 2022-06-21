@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useModal from './useModal';
 import Modal from './modal';
+import Login from '../Log/Login';
 
 const IndexModal = () => {
   const { isShowing: isLoginFormShowed, toggle: toggleLoginForm } = useModal();
@@ -21,7 +22,9 @@ const IndexModal = () => {
         <p>Se connecter</p>
       </div>
 
-      <Modal isShowing={isLoginFormShowed} hide={toggleLoginForm}></Modal>
+      <Modal isShowing={isLoginFormShowed} hide={toggleLoginForm}>
+        <Login />
+      </Modal>
     </>
   );
 };
