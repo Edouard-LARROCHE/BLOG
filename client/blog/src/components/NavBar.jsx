@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { UidContext } from '../AppContext';
@@ -7,6 +8,7 @@ import Logout from './Log/Logout';
 const NavBar = () => {
   const uid = useContext(UidContext);
   const userConnectData = useSelector((state) => state.user);
+  const [popupLog, setPopupLog] = useState('log-popup');
 
   return (
     <div>
@@ -18,18 +20,21 @@ const NavBar = () => {
             <h5>Bienvenue {userConnectData.pseudo}</h5>
           </li>
           <li>
-            <div className='logout'>
-              <Logout />
-            </div>
-            <div className='logout-popup'>
-              <p>Logout</p>
-            </div>
+            <Logout />
           </li>
         </ul>
       ) : (
-        <Link to='/log'>
-          <img src='./assets/SVG/login.svg' alt='login' />
-        </Link>
+        <div className={popupLog}>
+          <Link to='/log'>
+            <img
+              src='./assets/SVG/login.svg'
+              alt='login'
+              onMouseOver={() => setPopupLog('log-popup-after')}
+              onMouseLeave={() => setPopupLog('log-popup')}
+            />
+          </Link>
+          <p>Se connecter</p>
+        </div>
       )}
     </div>
   );

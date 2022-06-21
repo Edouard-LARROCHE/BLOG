@@ -1,10 +1,15 @@
-.logout-popup {
-  opacity: 0;
+.log-popup {
+  width: 50px;
+
+  p {
+    opacity: 0;
+  }
 }
-.logout {
-  &:hover {
-    .logout-popup {
-      opacity: 1;
-    }
+
+.log-popup-after {
+  width: 50px;
+
+  p {
+    opacity: 1;
   }
 }
