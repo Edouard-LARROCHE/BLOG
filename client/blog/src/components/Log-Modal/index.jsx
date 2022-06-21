@@ -12,7 +12,7 @@ const IndexModal = () => {
         <img
           src='./assets/SVG/login.svg'
           alt='login'
-          style={{ width: '30px', marginTop: '20px', background: '#161b22' }}
+          style={{ width: '30px', marginTop: '20px', cursor: 'pointer', background: '#161b22' }}
           onClick={toggleLoginForm}
           onMouseOver={() => setPopupLog('popup-after')}
           onMouseLeave={() => setPopupLog('popup')}
