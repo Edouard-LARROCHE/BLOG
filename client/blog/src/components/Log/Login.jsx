@@ -31,7 +31,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className='login-form'>
       <form onSubmit={handleSubmit}>
         <h1>SE CONNECTER</h1>
         <input type='email' placeholder='Adresse mail' name='email' onChange={(e) => setEmail(e.target.value)} value={email} required />
