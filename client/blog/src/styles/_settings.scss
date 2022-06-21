@@ -1,4 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+$font1: 'Bebas Neue', cursive;
+
 $background: #0d1117;
+
+h2 {
+  font-family: $font1;
+  letter-spacing: 3px;
+  font-style: italic;
+  font-weight: lighter;
+}
 
 * {
   box-sizing: border-box;
