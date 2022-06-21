@@ -2,44 +2,44 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background: $background-2;
+
+  h2 {
+    background: $background-2;
+  }
 
   .user-connect {
     display: flex;
     align-items: center;
+    background: $background-2;
 
-    // h5 {
-    //   transform: translateY(8px);
-    //   margin-right: 15px;
-    // }
+    h5 {
+      margin-right: 15px;
+      background: $background-2;
+    }
   }
 }
 
 .popup {
   width: 50px;
+  background: $background-2;
 
   p {
     transform: translateX(-35px);
-    width: 95px;
+    width: 115px;
     opacity: 0;
-    border: 1px solid;
-    padding: 3px;
-    border-radius: 2px;
-    background: $color-4;
-    color: $black;
+    background: $background-2;
   }
 }
 
 .popup-after {
   width: 50px;
+  background: $background-2;
 
   p {
     transform: translateX(-35px);
-    width: 95px;
+    width: 115px;
     opacity: 1;
-    border: 1px solid;
-    padding: 3px;
-    border-radius: 2px;
-    background: $color-4;
-    color: $black;
+    background: $background-2;
   }
 }

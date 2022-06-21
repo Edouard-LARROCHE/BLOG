@@ -24,7 +24,7 @@ const NavBar = () => {
             <img
               src='./assets/SVG/login.svg'
               alt='login'
-              style={{ width: '30px', marginTop: '20px' }}
+              style={{ width: '30px', marginTop: '20px', background: '#161b22' }}
               onMouseOver={() => setPopupLog('popup-after')}
               onMouseLeave={() => setPopupLog('popup')}
             />
