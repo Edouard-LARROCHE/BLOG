@@ -103,17 +103,25 @@ const Register = ({ handleChange }) => {
               <p className='password-error' />
               <p className='terms-error' />
             </div>
-            <div style={{ display: 'flex', marginTop: '2rem' }}>
+            <div className='checkbox' style={{ display: 'flex' }}>
               <input style={{ marginRight: '0.5rem' }} type='checkbox' id='terms' />
               <p style={{ marginRight: '0.4rem' }}>J'accepte les</p>
               <Link to='/'>
                 <p style={{ textDecoration: 'underline' }}>conditions générales</p>
               </Link>
             </div>
-            <button style={{ marginTop: '0.5rem' }} className='log-button' type='submit'>
+            <button className='button-connect' type='submit'>
               <p>S'ENREGISTRER</p>
             </button>
           </form>
+          <div className='no-account'>
+            <div className='switch-create'>
+              <p>Pas de compte ?</p>
+              <p onClick={handleChange} id='login'>
+                CREER UN COMPTE
+              </p>
+            </div>
+          </div>
         </div>
       )}
     </>

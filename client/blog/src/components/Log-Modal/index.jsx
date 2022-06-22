@@ -15,7 +15,7 @@ const IndexModal = () => {
       setRegister(true);
       setLogin(false);
     } else if (e.target.id === 'login') {
-      setLogin(false);
+      setLogin(true);
       setRegister(false);
     }
   };
