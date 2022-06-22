@@ -10,7 +10,7 @@ const NavBar = () => {
 
   return (
     <div className='navBar'>
-      <h2>Stack-BLOG</h2>
+      <h2 className='app-name'>Stack-BLOG</h2>
       {uid ? (
         <div className='user-connect'>
           <h5>Bienvenue {userConnectData.pseudo}</h5>
