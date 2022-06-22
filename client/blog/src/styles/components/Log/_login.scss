@@ -1,0 +1,60 @@
+.form-group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 60%;
+}
+
+.form-field {
+  font-family: $font-2;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid $black;
+  outline: 0;
+  font-size: 0.9rem;
+  color: $black;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form-label {
+    font-size: 1rem;
+    cursor: text;
+    top: 15px;
+  }
+}
+
+.form-label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: $black;
+}
+
+.form-field:focus {
+  ~ .form-label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: $black;
+    font-weight: lighter;
+  }
+  padding-bottom: 6px;
+  font-weight: lighter;
+  border-width: 1px;
+}
+
+.form-field {
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
+}

@@ -33,8 +33,19 @@ const Login = () => {
   return (
     <div className='login-form'>
       <form onSubmit={handleSubmit}>
-        <h1>SE CONNECTER</h1>
-        <input type='email' placeholder='Adresse mail' name='email' onChange={(e) => setEmail(e.target.value)} value={email} required />
+        <h1>CONNECTE TOI</h1>
+        <div className='form-group field'>
+          <input
+            className='form-field'
+            type='email'
+            placeholder='Adresse mail'
+            name='email'
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required
+          />
+          <label className='form-label'>Adresse mail</label>
+        </div>
         <input type='password' placeholder='Mot de passe' name='password' onChange={(e) => setPassword(e.target.value)} value={password} required />
         {error && <p>{error}</p>}
         <button type='submit'>
