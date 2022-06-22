@@ -8,9 +8,8 @@ const modal = ({ isShowing, hide, ...props }) => {
           <div className='modal-wrapper'>
             <div className='modal'>
               <div className='modal-header'>
-                {/* <h3>ADMIN MAISON MORIN</h3> */}
-                <div className='modal-close-button' onClick={hide} style={{ cursor: 'pointer', color: '#012f6b' }}>
-                  <img src='https://img.icons8.com/small/16/000000/delete-sign.png' />
+                <div className='modal-close-button' onClick={hide} style={{ cursor: 'pointer' }}>
+                  <img src='https://img.icons8.com/small/16/000000/delete-sign.png' alt='close' />
                 </div>
               </div>
               <div>{props.children}</div>

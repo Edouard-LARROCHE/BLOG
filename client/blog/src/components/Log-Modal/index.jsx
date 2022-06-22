@@ -2,10 +2,23 @@ import React, { useState } from 'react';
 import useModal from './useModal';
 import Modal from './modal';
 import Login from '../Log/Login';
+import Register from '../Log/Register';
 
 const IndexModal = () => {
   const { isShowing: isLoginFormShowed, toggle: toggleLoginForm } = useModal();
   const [popupLog, setPopupLog] = useState('popup');
+  const [register, setRegister] = useState(false);
+  const [login, setLogin] = useState(true);
+
+  const handleChange = (e) => {
+    if (e.target.id === 'register') {
+      setRegister(true);
+      setLogin(false);
+    } else if (e.target.id === 'login') {
+      setLogin(false);
+      setRegister(false);
+    }
+  };
 
   return (
     <>
@@ -18,12 +31,12 @@ const IndexModal = () => {
           onMouseOver={() => setPopupLog('popup-after')}
           onMouseLeave={() => setPopupLog('popup')}
         />
-
         <p>Se connecter</p>
       </div>
 
       <Modal isShowing={isLoginFormShowed} hide={toggleLoginForm}>
-        <Login />
+        {login && <Login handleChange={handleChange} />}
+        {register && <Register handleChange={handleChange} />}
       </Modal>
     </>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Login = () => {
+const Login = ({ handleChange }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -33,14 +33,44 @@ const Login = () => {
   return (
     <div className='login-form'>
       <form onSubmit={handleSubmit}>
-        <h1>SE CONNECTER</h1>
-        <input type='email' placeholder='Adresse mail' name='email' onChange={(e) => setEmail(e.target.value)} value={email} required />
-        <input type='password' placeholder='Mot de passe' name='password' onChange={(e) => setPassword(e.target.value)} value={password} required />
-        {error && <p>{error}</p>}
-        <button type='submit'>
+        <h1>BIENVENUE</h1>
+        <div className='form-group field'>
+          <input
+            className='form-field'
+            type='email'
+            placeholder='Adresse mail'
+            name='email'
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required
+          />
+          <label className='form-label'>Adresse mail</label>
+        </div>
+        <div className='form-group field'>
+          <input
+            className='form-field'
+            type='password'
+            placeholder='Mot de passe'
+            name='password'
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            required
+          />
+          <label className='form-label'>Mot de passe</label>
+        </div>
+        {error && <p className='error'>{error}</p>}
+        <div className='button-connect' type='submit' onClick={handleSubmit}>
           <p>CONNEXION</p>
-        </button>
+        </div>
       </form>
+      <div className='no-account'>
+        <div className='switch-create'>
+          <p>Pas de compte ?</p>
+          <p onClick={handleChange} id='register'>
+            CREER UN COMPTE
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
