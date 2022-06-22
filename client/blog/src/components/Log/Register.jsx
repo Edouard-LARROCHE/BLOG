@@ -107,18 +107,18 @@ const Register = ({ handleChange }) => {
               <input style={{ marginRight: '0.5rem' }} type='checkbox' id='terms' />
               <p style={{ marginRight: '0.4rem' }}>J'accepte les</p>
               <Link to='/'>
-                <p style={{ textDecoration: 'underline' }}>conditions générales</p>
+                <p style={{ textDecoration: 'underline', color: 'rgb(114, 69, 238)' }}>conditions générales</p>
               </Link>
             </div>
             <button className='button-connect' type='submit'>
               <p>S'ENREGISTRER</p>
             </button>
           </form>
-          <div className='no-account'>
+          <div className='yes-account'>
             <div className='switch-create'>
-              <p>Pas de compte ?</p>
+              <p>Déjà un compte ?</p>
               <p onClick={handleChange} id='login'>
-                CREER UN COMPTE
+                SE CONNECTER
               </p>
             </div>
           </div>

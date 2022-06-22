@@ -3,3 +3,21 @@
     color: $black;
   }
 }
+
+.yes-account {
+  position: absolute;
+  bottom: 50px;
+  left: 150px;
+  .switch-create {
+    display: flex;
+
+    :nth-child(2) {
+      color: rgb(114, 69, 238);
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    p {
+      color: $black;
+    }
+  }
+}
