@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Login = () => {
+const Login = ({ handleChange }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -66,7 +66,9 @@ const Login = () => {
       <div className='no-account'>
         <div className='switch-create'>
           <p>Pas de compte ?</p>
-          <p>CREER UN COMPTE</p>
+          <p onClick={handleChange} id='register'>
+            CREER UN COMPTE
+          </p>
         </div>
       </div>
     </div>
