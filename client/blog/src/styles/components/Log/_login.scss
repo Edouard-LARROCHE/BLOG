@@ -1,7 +1,52 @@
+.login-form {
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    color: $black;
+    font-weight: lighter;
+    font-size: 1.7rem;
+  }
+
+  .error {
+    color: rgb(245, 9, 9);
+  }
+
+  .button-connect {
+    p {
+      margin-top: 1.5rem;
+      color: $black;
+      cursor: pointer;
+      font-style: oblique;
+    }
+  }
+
+  .no-account {
+    position: absolute;
+    bottom: 140px;
+    left: 150px;
+    .switch-create {
+      display: flex;
+
+      :nth-child(2) {
+        color: rgb(114, 69, 238);
+        cursor: pointer;
+      }
+      p {
+        color: $black;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
 .form-group {
   position: relative;
   padding: 15px 0 0;
-  margin-top: 10px;
+  margin-top: 20px;
   width: 60%;
 }
 
@@ -35,6 +80,7 @@
   transition: 0.2s;
   font-size: 1rem;
   color: $black;
+  opacity: 0.7;
 }
 
 .form-field:focus {
@@ -43,13 +89,15 @@
     top: 0;
     display: block;
     transition: 0.2s;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: $black;
     font-weight: lighter;
   }
   padding-bottom: 6px;
   font-weight: lighter;
   border-width: 1px;
+  border-image: linear-gradient(to right, rgb(114, 69, 238), rgb(114, 69, 238));
+  border-image-slice: 1;
 }
 
 .form-field {

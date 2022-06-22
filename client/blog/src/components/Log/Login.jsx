@@ -33,7 +33,7 @@ const Login = () => {
   return (
     <div className='login-form'>
       <form onSubmit={handleSubmit}>
-        <h1>CONNECTE TOI</h1>
+        <h1>BIENVENUE</h1>
         <div className='form-group field'>
           <input
             className='form-field'
@@ -46,12 +46,29 @@ const Login = () => {
           />
           <label className='form-label'>Adresse mail</label>
         </div>
-        <input type='password' placeholder='Mot de passe' name='password' onChange={(e) => setPassword(e.target.value)} value={password} required />
-        {error && <p>{error}</p>}
-        <button type='submit'>
+        <div className='form-group field'>
+          <input
+            className='form-field'
+            type='password'
+            placeholder='Mot de passe'
+            name='password'
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            required
+          />
+          <label className='form-label'>Mot de passe</label>
+        </div>
+        {error && <p className='error'>{error}</p>}
+        <div className='button-connect' type='submit' onClick={handleSubmit}>
           <p>CONNEXION</p>
-        </button>
+        </div>
       </form>
+      <div className='no-account'>
+        <div className='switch-create'>
+          <p>Pas de compte ?</p>
+          <p>CREER UN COMPTE</p>
+        </div>
+      </div>
     </div>
   );
 };
