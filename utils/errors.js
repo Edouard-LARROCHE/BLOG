@@ -18,7 +18,7 @@ const signInErrors = (err) => {
 
   if (err.message.includes('email')) errors.email = 'Adresse email inconnue';
 
-  if (err.message.includes('password')) errors.password = 'Erreur de mot de passe';
+  if (err.message.includes('password')) errors.password = 'Mot de passe incorrect';
 
   return errors;
 };
