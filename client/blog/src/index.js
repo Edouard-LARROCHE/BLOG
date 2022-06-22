@@ -7,11 +7,17 @@ import reportWebVitals from './reportWebVitals';
 // REDUX
 import { Provider } from 'react-redux';
 import store from './app/store';
+import { getPosts } from './feature-redux/posts.slice';
+import { getUsers } from './feature-redux/users.slice';
+
+const Store = store;
+Store.dispatch(getPosts());
+Store.dispatch(getUsers());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={Store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>

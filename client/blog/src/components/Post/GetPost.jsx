@@ -1,18 +1,17 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { getPosts } from '../../feature-redux/posts.slice';
+import { useSelector } from 'react-redux';
+import Posts from './Posts';
 
 const GetPost = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPosts());
-  }, [dispatch]);
+  const postData = useSelector((state) => state.posts[0]);
+  console.log(postData);
 
   return (
     <div>
-      <h1>POSTS</h1>
+      {/* {postData.map((post) => {
+        return <Posts key={post._id} post={post} />;
+      })} */}
+      <h1> {postData.title} </h1>
     </div>
   );
 };
