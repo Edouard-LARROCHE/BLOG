@@ -10,7 +10,10 @@ const NavBar = () => {
 
   return (
     <div className='navBar'>
-      <h2 className='app-name'>Stack-BLOG</h2>
+      <div className='logo-stack'>
+        <img src='https://img.icons8.com/ios/50/000000/bbb.png' alt='logo-stack' />
+        <h2 className='app-name'>Stack-BLOG</h2>
+      </div>
       {uid ? (
         <div className='user-connect'>
           <h5>Bienvenue {userConnectData.pseudo}</h5>

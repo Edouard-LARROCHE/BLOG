@@ -1,0 +1,28 @@
+.checkbox {
+  p {
+    color: $black;
+  }
+}
+.error-register {
+  p {
+    color: rgb(245, 9, 9);
+  }
+}
+
+.yes-account {
+  position: absolute;
+  bottom: 20px;
+  left: 150px;
+  .switch-create {
+    display: flex;
+
+    :nth-child(2) {
+      color: rgb(114, 69, 238);
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    p {
+      color: $black;
+    }
+  }
+}

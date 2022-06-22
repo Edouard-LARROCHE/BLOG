@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Login = ({ handleChange }) => {
+const Login = ({ handleChange, trueConnect }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [errorEmail, setErrorEmail] = useState('');
+  const [errorPassword, setErrorPassword] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +21,8 @@ const Login = ({ handleChange }) => {
     })
       .then((res) => {
         if (res.data.errors) {
-          setError(res.data.errors.password || res.data.errors.email);
+          setErrorEmail(res.data.errors.email);
+          setErrorPassword(res.data.errors.password);
         } else {
           window.location = '/';
         }
@@ -34,6 +36,7 @@ const Login = ({ handleChange }) => {
     <div className='login-form'>
       <form onSubmit={handleSubmit}>
         <h1>BIENVENUE</h1>
+        <p> {trueConnect} </p>
         <div className='form-group field'>
           <input
             className='form-field'
@@ -44,7 +47,7 @@ const Login = ({ handleChange }) => {
             value={email}
             required
           />
-          <label className='form-label'>Adresse mail</label>
+          <label className='form-label'> {!errorEmail ? 'Adresse mail' : <p className='error'>{errorEmail}</p>} </label>
         </div>
         <div className='form-group field'>
           <input
@@ -56,12 +59,12 @@ const Login = ({ handleChange }) => {
             value={password}
             required
           />
-          <label className='form-label'>Mot de passe</label>
+          <label className='form-label'>{!errorPassword ? 'Mot de passe' : <p className='error'>{errorPassword}</p>}</label>
         </div>
-        {error && <p className='error'>{error}</p>}
-        <div className='button-connect' type='submit' onClick={handleSubmit}>
+
+        <button className='button-connect' type='submit'>
           <p>CONNEXION</p>
-        </div>
+        </button>
       </form>
       <div className='no-account'>
         <div className='switch-create'>
