@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Login = ({ handleChange }) => {
+const Login = ({ handleChange, trueConnect }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorEmail, setErrorEmail] = useState('');
@@ -36,6 +36,7 @@ const Login = ({ handleChange }) => {
     <div className='login-form'>
       <form onSubmit={handleSubmit}>
         <h1>BIENVENUE</h1>
+        <p> {trueConnect} </p>
         <div className='form-group field'>
           <input
             className='form-field'
@@ -61,9 +62,9 @@ const Login = ({ handleChange }) => {
           <label className='form-label'>{!errorPassword ? 'Mot de passe' : <p className='error'>{errorPassword}</p>}</label>
         </div>
 
-        <div className='button-connect' type='submit' onClick={handleSubmit}>
+        <button className='button-connect' type='submit'>
           <p>CONNEXION</p>
-        </div>
+        </button>
       </form>
       <div className='no-account'>
         <div className='switch-create'>

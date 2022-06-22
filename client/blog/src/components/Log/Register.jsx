@@ -1,93 +1,120 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Login from './Login';
 
-const Register = () => {
-  const [formSubmit, setFormSubmit] = useState(false);
-  const [pseudo, setPseudo] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const Register = ({ handleChange }) => {
+  const [formConnect, setFormConnect] = useState(false);
+  const [errorPseudo, setErrorPseudo] = useState('');
+  const [errorEmail, setErrorEmail] = useState('');
+  const [errorPassword, setErrorPassword] = useState('');
   const [controlPassword, setControlPassword] = useState('');
+  const [data, setData] = useState({
+    pseudo: '',
+    email: '',
+    password: '',
+  });
 
-  const handleRegister = async (e) => {
+  const handleRegister = ({ currentTarget: input }) => {
+    setData({ ...data, [input.name]: input.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const terms = document.getElementById('terms');
-    const pseudoError = document.querySelector('.pseudo.error');
-    const emailError = document.querySelector('.email.error');
-    const passwordError = document.querySelector('.password.error');
-    const passwordConfirmError = document.querySelector('.password-confirm.error');
-    const termsError = document.querySelector('.terms.error');
-
-    passwordConfirmError.innerHTML = '';
+    const termsError = document.querySelector('.terms-error');
+    const controlPasswordError = document.querySelector('.password-error');
+    controlPasswordError.innerHTML = '';
     termsError.innerHTML = '';
 
-    if (password !== controlPassword || !terms.checked) {
-      if (password !== controlPassword) passwordConfirmError.innerHTML = 'Les mots de passe ne correspondent pas';
-
-      if (!terms.checked) termsError.innerHTML = 'Veuillez valider les conditions générales';
+    if (data.password !== controlPassword) {
+      controlPasswordError.innerHTML = 'Les mots de passe ne correspondent pas.';
+    } else if (!terms.checked) {
+      termsError.innerHTML = 'Veuillez valider les conditions générales';
     } else {
-      await axios({
-        method: 'post',
-        url: `${process.env.REACT_APP_API}/user/register`,
-        data: {
-          pseudo,
-          email,
-          password,
-        },
-      })
+      await axios
+        .post(`${process.env.REACT_APP_API}/user/register`, data)
         .then((res) => {
-          console.log(res);
           if (res.data.errors) {
-            pseudoError.innerHTML = res.data.errors.pseudo;
-            emailError.innerHTML = res.data.errors.email;
-            passwordError.innerHTML = res.data.errors.password;
+            setErrorPseudo(res.data.errors.pseudo);
+            setErrorEmail(res.data.errors.email);
+            setErrorPassword(res.data.errors.password);
           } else {
-            setFormSubmit(true);
+            setFormConnect(true);
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
   return (
     <>
-      {formSubmit ? (
+      {formConnect ? (
         <>
-          <span></span>
-          <h4 className='success'>Enregistrement réussi, veuillez-vous connecter</h4>
+          <Login trueConnect='Votre compte est bien enregistré, veuillez vous connecter.' />
         </>
       ) : (
-        <form action='' onSubmit={handleRegister} id='sign-up-form'>
-          <label htmlFor='pseudo'>Pseudo</label>
-          <br />
-          <input type='text' name='pseudo' id='pseudo' onChange={(e) => setPseudo(e.target.value)} value={pseudo} />
-          <div className='pseudo error'></div>
-          <br />
-          <label htmlFor='email'>Email</label>
-          <br />
-          <input type='text' name='email' id='email' onChange={(e) => setEmail(e.target.value)} value={email} />
-          <div className='email error'></div>
-          <br />
-          <label htmlFor='password'>Mot de passe</label>
-          <br />
-          <input type='password' name='password' id='password' onChange={(e) => setPassword(e.target.value)} value={password} />
-          <div className='password error'></div>
-          <br />
-          <label htmlFor='password-conf'>Confirmer mot de passe</label>
-          <br />
-          <input type='password' name='password' id='password-conf' onChange={(e) => setControlPassword(e.target.value)} value={controlPassword} />
-          <div className='password-confirm error'></div>
-          <br />
-          <input type='checkbox' id='terms' />
-          <label htmlFor='terms'>
-            J'accepte les{' '}
-            <a href='/' target='_blank' rel='noopener noreferrer'>
-              conditions générales
-            </a>
-          </label>
-          <div className='terms error'></div>
-          <br />
-          <input type='submit' value='Valider inscription' />
-        </form>
+        <div className='login-form'>
+          <form onSubmit={handleSubmit}>
+            <h1>CRÉER UN COMPTE</h1>
+            <div className='form-group field'>
+              <input className='form-field' type='text' placeholder='Pseudo' name='pseudo' onChange={handleRegister} value={data.pseudo} required />
+              <label className='form-label'> {!errorPseudo ? 'Pseudo' : <p className='error'>{errorPseudo}</p>} </label>
+            </div>
+            <div className='form-group field'>
+              <input
+                className='form-field'
+                type='email'
+                placeholder='Adresse mail'
+                name='email'
+                onChange={handleRegister}
+                value={data.email}
+                required
+              />
+              <label className='form-label'> {!errorEmail ? 'Adresse mail' : <p className='error'>{errorEmail}</p>} </label>
+            </div>
+            <div className='form-group field'>
+              <input
+                className='form-field'
+                type='password'
+                placeholder='Mot de passe'
+                name='password'
+                onChange={handleRegister}
+                value={data.password}
+                required
+              />
+              <label className='form-label'> {!errorPassword ? 'Mot de passe' : <p className='error'>{errorPassword}</p>} </label>
+            </div>
+            <div className='form-group field'>
+              <input
+                className='form-field'
+                type='password'
+                placeholder='Confirmer le mot de passe'
+                name='password'
+                onChange={(e) => setControlPassword(e.target.value)}
+                value={controlPassword}
+                required
+              />
+              <label className='form-label'> {!errorEmail ? 'Confirmer le mot de passe' : <p className='error'>{errorEmail}</p>} </label>
+            </div>
+            <div className='error-register'>
+              <p className='password-error' />
+              <p className='terms-error' />
+            </div>
+            <div style={{ display: 'flex', marginTop: '2rem' }}>
+              <input style={{ marginRight: '0.5rem' }} type='checkbox' id='terms' />
+              <p style={{ marginRight: '0.4rem' }}>J'accepte les</p>
+              <Link to='/'>
+                <p style={{ textDecoration: 'underline' }}>conditions générales</p>
+              </Link>
+            </div>
+            <button style={{ marginTop: '0.5rem' }} className='log-button' type='submit'>
+              <p>S'ENREGISTRER</p>
+            </button>
+          </form>
+        </div>
       )}
     </>
   );
