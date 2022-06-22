@@ -3,10 +3,15 @@
     color: $black;
   }
 }
+.error-register {
+  p {
+    color: rgb(245, 9, 9);
+  }
+}
 
 .yes-account {
   position: absolute;
-  bottom: 50px;
+  bottom: 20px;
   left: 150px;
   .switch-create {
     display: flex;
