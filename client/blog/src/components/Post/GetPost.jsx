@@ -3,15 +3,13 @@ import { useSelector } from 'react-redux';
 import Posts from './Posts';
 
 const GetPost = () => {
-  const postData = useSelector((state) => state.posts[0]);
-  console.log(postData);
+  const postData = useSelector((state) => state.posts);
 
   return (
     <div>
-      {/* {postData.map((post) => {
-        return <Posts key={post._id} post={post} />;
-      })} */}
-      <h1> {postData.title} </h1>
+      {postData?.map((post) => (
+        <Posts key={post._id} post={post} />
+      ))}
     </div>
   );
 };

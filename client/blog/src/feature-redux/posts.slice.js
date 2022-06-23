@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const postsSlice = createSlice({
   name: 'posts',
-  initialState: {},
+  initialState: [],
   reducers: {
     getPostsData: (state, action) => {
       return action.payload;
