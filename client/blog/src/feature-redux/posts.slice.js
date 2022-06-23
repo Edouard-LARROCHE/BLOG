@@ -31,8 +31,8 @@ export const getPosts = () => async (dispatch) => {
   }
 };
 
-export const likePost = (postId, userId) => async (dispatch) => {
-  await axios({
+export const likePost = (postId, userId) => (dispatch) => {
+  axios({
     method: 'patch',
     url: `${process.env.REACT_APP_API}/posts/like-post/` + postId,
     data: { id: userId },
