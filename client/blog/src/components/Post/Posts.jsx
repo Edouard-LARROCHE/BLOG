@@ -18,7 +18,7 @@ const Posts = ({ post }) => {
 
   return (
     <div>
-      <p> {posterIdData.pseudo}</p>
+      <p>créer par {posterIdData.pseudo}</p>
       <h1> {post.title} </h1>
     </div>
   );
