@@ -1,5 +1,6 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { dateParser } from '../utils/DateParser';
 
 const Posts = ({ post }) => {
   const [posterIdData, setPosterIdData] = useState([]);
@@ -18,8 +19,12 @@ const Posts = ({ post }) => {
 
   return (
     <div>
-      <p>créer par {posterIdData.pseudo}</p>
+      <p>
+        créer par {posterIdData.pseudo} le {dateParser(post.createAt)}
+      </p>
       <h1> {post.title} </h1>
+      <h2> {post.subtitle} </h2>
+      <p> {post.content} </p>
     </div>
   );
 };
