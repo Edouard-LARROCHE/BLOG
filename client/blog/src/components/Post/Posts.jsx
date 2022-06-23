@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { dateParser } from '../utils/DateParser';
+import LikePost from './LikePost';
 
 const Posts = ({ post }) => {
   const [posterIdData, setPosterIdData] = useState([]);
@@ -25,6 +26,7 @@ const Posts = ({ post }) => {
       <h1> {post.title} </h1>
       <h2> {post.subtitle} </h2>
       <p> {post.content} </p>
+      <LikePost />
     </div>
   );
 };
