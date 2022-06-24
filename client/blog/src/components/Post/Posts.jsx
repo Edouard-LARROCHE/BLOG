@@ -26,7 +26,7 @@ const Posts = ({ post }) => {
       <h1> {post.title} </h1>
       <h2> {post.subtitle} </h2>
       <p> {post.content} </p>
-      <LikePost />
+      <LikePost post={post} />
     </div>
   );
 };

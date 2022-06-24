@@ -37,8 +37,8 @@ export const likePost = (postId, userId) => (dispatch) => {
     url: `${process.env.REACT_APP_API}/posts/like-post/` + postId,
     data: { id: userId },
   })
-    .then((res) => {
-      dispatch(likePostData(res.data));
+    .then(() => {
+      dispatch(likePostData({ userId, postId }));
     })
     .catch((err) => console.log(err));
 };

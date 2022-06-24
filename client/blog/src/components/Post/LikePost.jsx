@@ -1,15 +1,29 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { likePost } from '../../feature-redux/posts.slice';
+import { getUser } from '../../feature-redux/user.slice';
 import { UidContext } from '../../AppContext';
 
-const LikePost = () => {
+const LikePost = ({ post }) => {
   const dispatch = useDispatch();
   const uid = useContext(UidContext);
+  const [isLiked, setIsLiked] = useState(false);
 
   const handleLike = () => {
-    dispatch(likePost('62ac56e0020cb46a81d6ad11', uid));
+    dispatch(likePost(post._id, uid));
+    dispatch(getUser(uid));
+    setIsLiked(true);
   };
+
+  const handleUnLike = () => {
+    // dispatch();
+    setIsLiked(false);
+  };
+
+  useEffect(() => {
+    if (post.likers.includes(uid)) setIsLiked(true);
+    else setIsLiked(false);
+  }, [post.likers, uid]);
 
   return (
     <div>
