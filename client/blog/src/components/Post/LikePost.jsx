@@ -12,6 +12,12 @@ const LikePost = ({ post }) => {
   const handleLike = () => {
     dispatch(likePost(post._id, uid));
     dispatch(getUser(uid));
+    setIsLiked(true);
+  };
+
+  const handleUnLike = () => {
+    // dispatch();
+    setIsLiked(false);
   };
 
   useEffect(() => {
