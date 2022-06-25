@@ -24,9 +24,8 @@ const LikePost = ({ post }) => {
   };
 
   const handleUnLike = () => {
-    // dispatch(unLikePost(post._id, uid));
-    // dispatch(getUser(uid));
-    console.log('unlike');
+    dispatch(unLikePost(post._id, uid));
+    dispatch(getUser(uid));
     setIsLiked(false);
   };
 
