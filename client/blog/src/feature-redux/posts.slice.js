@@ -19,6 +19,17 @@ export const postsSlice = createSlice({
         return post;
       });
     },
+    unLikePostData: (state, action) => {
+      return state.map((post) => {
+        if (post._id === action.payload.postId) {
+          return {
+            ...post,
+            likers: post.likers.filter((id) => id !== action.payload.userId),
+          };
+        }
+        return post;
+      });
+    },
   },
 });
 
@@ -35,6 +46,18 @@ export const likePost = (postId, userId) => (dispatch) => {
   axios({
     method: 'patch',
     url: `${process.env.REACT_APP_API}/posts/like-post/` + postId,
+    data: { id: userId },
+  })
+    .then(() => {
+      dispatch(likePostData({ userId, postId }));
+    })
+    .catch((err) => console.log(err));
+};
+
+export const unLikePost = (postId, userId) => (dispatch) => {
+  axios({
+    method: 'patch',
+    url: `${process.env.REACT_APP_API}/posts/unlike-post/` + postId,
     data: { id: userId },
   })
     .then(() => {
