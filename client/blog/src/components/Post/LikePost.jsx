@@ -8,16 +8,28 @@ const LikePost = ({ post }) => {
   const dispatch = useDispatch();
   const uid = useContext(UidContext);
   const [isLiked, setIsLiked] = useState(false);
+  const [popupLike, setPopupLike] = useState('popup');
+
+  const popup = () => {
+    setPopupLike('popup-after');
+    setTimeout(() => {
+      setPopupLike('popup');
+    }, 2000);
+  };
 
   const handleLike = () => {
+    // if (!uid) setPopupLike('popup-after');
+    // else {
     dispatch(likePost(post._id, uid));
     dispatch(getUser(uid));
     setIsLiked(true);
+    // }
   };
 
   const handleUnLike = () => {
     // dispatch();
     setIsLiked(false);
+    console.log('unlike');
   };
 
   useEffect(() => {
@@ -27,7 +39,20 @@ const LikePost = ({ post }) => {
 
   return (
     <div>
-      <button onClick={handleLike}>LIKE</button>
+      <div className={popupLike}>
+        {uid ? (
+          isLiked === false ? (
+            <button onClick={handleLike}> like </button>
+          ) : (
+            <button onClick={handleUnLike}> unlike </button>
+          )
+        ) : (
+          <>
+            <button onClick={popup}> like </button>
+            <p> Se connecter pour liker</p>
+          </>
+        )}
+      </div>
     </div>
   );
 };
