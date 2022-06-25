@@ -61,10 +61,10 @@ export const unLikePost = (postId, userId) => (dispatch) => {
     data: { id: userId },
   })
     .then(() => {
-      dispatch(likePostData({ userId, postId }));
+      dispatch(unLikePostData({ userId, postId }));
     })
     .catch((err) => console.log(err));
 };
 
-export const { getPostsData, likePostData } = postsSlice.actions;
+export const { getPostsData, likePostData, unLikePostData } = postsSlice.actions;
 export default postsSlice.reducer;

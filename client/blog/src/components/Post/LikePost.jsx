@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useDispatch } from 'react-redux';
-import { likePost } from '../../feature-redux/posts.slice';
+import { likePost, unLikePost } from '../../feature-redux/posts.slice';
 import { getUser } from '../../feature-redux/user.slice';
 import { UidContext } from '../../AppContext';
 
@@ -18,18 +18,16 @@ const LikePost = ({ post }) => {
   };
 
   const handleLike = () => {
-    // if (!uid) setPopupLike('popup-after');
-    // else {
     dispatch(likePost(post._id, uid));
     dispatch(getUser(uid));
     setIsLiked(true);
-    // }
   };
 
   const handleUnLike = () => {
-    // dispatch();
-    setIsLiked(false);
+    // dispatch(unLikePost(post._id, uid));
+    // dispatch(getUser(uid));
     console.log('unlike');
+    setIsLiked(false);
   };
 
   useEffect(() => {
