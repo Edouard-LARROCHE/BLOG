@@ -50,6 +50,7 @@ const LikePost = ({ post }) => {
           </>
         )}
       </div>
+      <p style={{ transform: 'translateY(10px)' }}> {post.likers.length} </p>
     </div>
   );
 };
