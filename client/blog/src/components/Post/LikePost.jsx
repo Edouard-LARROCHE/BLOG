@@ -35,22 +35,22 @@ const LikePost = ({ post }) => {
   }, [post.likers, uid]);
 
   return (
-    <div>
-      <div className={popupLike}>
+    <div className={popupLike}>
+      <div className='like'>
         {uid ? (
           isLiked === false ? (
-            <button onClick={handleLike}> like </button>
+            <img src='/assets/ICONS/like.png' alt='like' onClick={handleLike} />
           ) : (
-            <button onClick={handleUnLike}> unlike </button>
+            <img src='/assets/ICONS/unlike.png' alt='unlike' onClick={handleUnLike} />
           )
         ) : (
           <>
-            <button onClick={popup}> like </button>
-            <p> Se connecter pour liker</p>
+            <img src='/assets/ICONS/like.png' alt='like' onClick={popup} />
           </>
         )}
       </div>
-      <p style={{ transform: 'translateY(10px)' }}> {post.likers.length} </p>
+      <div style={{ transform: 'translate(15px, -10px)' }}> {post.likers.length} </div>
+      <p> Se connecter pour liker</p>
     </div>
   );
 };
