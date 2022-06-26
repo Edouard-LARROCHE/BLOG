@@ -35,7 +35,7 @@ const LikePost = ({ post }) => {
   }, [post.likers, uid]);
 
   return (
-    <div>
+    <div className='like'>
       <div className={popupLike}>
         {uid ? (
           isLiked === false ? (
