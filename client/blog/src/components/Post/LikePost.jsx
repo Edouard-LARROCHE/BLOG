@@ -35,8 +35,8 @@ const LikePost = ({ post }) => {
   }, [post.likers, uid]);
 
   return (
-    <div className='like'>
-      <div className={popupLike}>
+    <div className={popupLike}>
+      <div className='like'>
         {uid ? (
           isLiked === false ? (
             <img src='/assets/ICONS/like.png' alt='like' onClick={handleLike} />
@@ -46,11 +46,11 @@ const LikePost = ({ post }) => {
         ) : (
           <>
             <img src='/assets/ICONS/like.png' alt='like' onClick={popup} />
-            <p> Se connecter pour liker</p>
           </>
         )}
       </div>
-      <p style={{ transform: 'translate(15px, 2px)' }}> {post.likers.length} </p>
+      <div style={{ transform: 'translate(15px, -10px)' }}> {post.likers.length} </div>
+      <p> Se connecter pour liker</p>
     </div>
   );
 };
