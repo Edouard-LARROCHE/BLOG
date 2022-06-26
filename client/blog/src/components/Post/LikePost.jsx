@@ -39,13 +39,13 @@ const LikePost = ({ post }) => {
       <div className={popupLike}>
         {uid ? (
           isLiked === false ? (
-            <button onClick={handleLike}> like </button>
+            <img src='/assets/ICONS/like.png' alt='like' onClick={handleLike} />
           ) : (
-            <button onClick={handleUnLike}> unlike </button>
+            <img src='/assets/ICONS/unlike.png' alt='unlike' onClick={handleUnLike} />
           )
         ) : (
           <>
-            <button onClick={popup}> like </button>
+            <img src='/assets/ICONS/like.png' alt='like' onClick={popup} />
             <p> Se connecter pour liker</p>
           </>
         )}
