@@ -19,10 +19,13 @@ const Posts = ({ post }) => {
   }, [post.posterId]);
 
   return (
-    <div>
-      <p>
-        créer par {posterIdData.pseudo} le {dateParser(post.createAt)}
-      </p>
+    <div className='post-container'>
+      <div className='post-user-create'>
+        <img src='/assets/ICONS/perso.jpg' alt='user' />
+        <p>
+          créer par {posterIdData.pseudo} le {dateParser(post.createdAt)}
+        </p>
+      </div>
       <h1> {post.title} </h1>
       <h2> {post.subtitle} </h2>
       <p> {post.content} </p>
