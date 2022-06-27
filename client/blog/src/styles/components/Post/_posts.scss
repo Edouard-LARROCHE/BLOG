@@ -1,0 +1,15 @@
+.post-container {
+  .post-user-create {
+    display: flex;
+
+    img {
+      width: 45px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    p {
+      transform: translate(5px, 10px);
+    }
+  }
+}
