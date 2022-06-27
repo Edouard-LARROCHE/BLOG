@@ -23,7 +23,7 @@ const Posts = ({ post }) => {
   return (
     <div className='post-container'>
       <div className='post-user-create'>
-        <img src={posterIdData.pictureUr} alt={userName} />
+        <img src={posterIdData.pictureUrl ? posterIdData.pictureUrl : '/assets/ICONS/avatar-default.png'} alt={userName} />
         <p>
           créer par {posterIdData.pseudo} le {dateParser(post.createdAt)}
         </p>
