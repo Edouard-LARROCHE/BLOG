@@ -18,7 +18,7 @@ const Posts = ({ post }) => {
     fetch();
   }, [post.posterId]);
 
-  const userName = posterIdData.pseudo[0];
+  const userName = posterIdData.pseudo;
 
   return (
     <div className='post-container'>
