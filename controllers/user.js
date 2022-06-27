@@ -33,9 +33,12 @@ const updateUser = async (req, res) => {
   try {
     await UserModel.findOneAndUpdate(
       { _id: req.params.id },
+
       {
         $set: {
           bio: req.body.bio,
+          pseudo: req.body.pseudo,
+          pictureUrl: req.body.pictureUrl,
         },
       },
       { new: true, upsert: true, setDefaultsOnInsert: true },
