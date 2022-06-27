@@ -27,6 +27,9 @@ const userSchema = new mongoose.Schema(
       max: 500,
       minlength: 6,
     },
+    pictureUrl: {
+      type: String,
+    },
     bio: {
       type: String,
       max: 1024,

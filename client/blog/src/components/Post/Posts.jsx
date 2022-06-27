@@ -18,10 +18,12 @@ const Posts = ({ post }) => {
     fetch();
   }, [post.posterId]);
 
+  const userName = posterIdData.pseudo;
+
   return (
     <div className='post-container'>
       <div className='post-user-create'>
-        <img src='/assets/ICONS/perso.jpg' alt='user' />
+        <img src={posterIdData.pictureUrl ? posterIdData.pictureUrl : '/assets/ICONS/avatar-default.png'} alt={userName} />
         <p>
           créer par {posterIdData.pseudo} le {dateParser(post.createdAt)}
         </p>
