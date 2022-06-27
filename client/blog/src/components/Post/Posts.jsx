@@ -23,7 +23,7 @@ const Posts = ({ post }) => {
       <div className='post-user-create'>
         <img src='/assets/ICONS/perso.jpg' alt='user' />
         <p>
-          créer par {posterIdData.pseudo} le {dateParser(post.createAt)}
+          créer par {posterIdData.pseudo} le {dateParser(post.createdAt)}
         </p>
       </div>
       <h1> {post.title} </h1>

@@ -7,7 +7,7 @@ const GetPost = () => {
 
   return (
     <div>
-      {postData?.map((post) => (
+      {postData.map((post) => (
         <Posts key={post._id} post={post} />
       ))}
     </div>
