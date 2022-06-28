@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Users from './Users';
+import FollowUser from './FollowUser';
 
 const GetUsers = () => {
   const usersData = useSelector((state) => state.users);
@@ -9,19 +9,27 @@ const GetUsers = () => {
 
   useEffect(() => {
     let array = [];
-    usersData.map((user) => {
-      if (user._id !== userData._id) {
-        return array.push(user._id);
-      }
+    usersData.map((users) => {
+      if (users._id !== userData._id) return array.push(users._id);
       return setFollowId(array);
     });
   }, [userData._id, usersData]);
 
   return (
     <div>
-      {usersData.map((users) => (
-        <Users key={users._id} users={users} followId={followId} />
-      ))}
+      {followId &&
+        followId.map((user) => {
+          for (let i = 0; i < usersData.length; i++) {
+            if (user === usersData[i]._id);
+            return (
+              <div key={user}>
+                <p> {usersData[i].pseudo} </p>
+                <FollowUser followId={usersData[i]._id} />
+              </div>
+            );
+          }
+          return null;
+        })}
     </div>
   );
 };
