@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import FollowUser from './FollowUser';
+import GetUserPosts from './GetUserPosts';
 
 const GetUsers = () => {
   const usersData = useSelector((state) => state.users);
@@ -20,14 +21,20 @@ const GetUsers = () => {
       {followId &&
         followId.map((user) => {
           for (let i = 0; i < usersData.length; i++) {
-            if (user === usersData[i]._id);
-            return (
-              <div key={user}>
-                <img src={usersData[i].pictureUrl} alt='?' style={{ width: '25px' }} />
-                <p> {usersData[i].pseudo} </p>
-                <FollowUser followId={usersData[i]._id} />
-              </div>
-            );
+            if (user === usersData[i]._id) {
+              return (
+                <div key={user}>
+                  <img
+                    src={usersData[i].pictureUrl ? usersData[i].pictureUrl : '/assets/ICONS/avatar-default.png'}
+                    alt={usersData[i].pseudo}
+                    style={{ width: '25px' }}
+                  />
+                  <p> {usersData[i].pseudo} </p>
+                  <FollowUser followId={usersData[i]._id} />
+                  <GetUserPosts usersDataId={usersData[i]._id} />
+                </div>
+              );
+            }
           }
           return null;
         })}
