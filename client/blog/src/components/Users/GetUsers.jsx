@@ -10,7 +10,7 @@ const GetUsers = () => {
   useEffect(() => {
     let array = [];
     usersData.map((users) => {
-      if (users._id !== userData._id) return array.push(users._id);
+      if (users._id !== userData._id && !users.followers.includes(userData._id)) return array.push(users._id);
       return setFollowId(array);
     });
   }, [userData._id, usersData]);
@@ -20,14 +20,15 @@ const GetUsers = () => {
       {followId &&
         followId.map((user) => {
           for (let i = 0; i < usersData.length; i++) {
-            if (user === usersData[i]._id);
-            return (
-              <div key={user}>
-                <img src={usersData[i].pictureUrl} alt='?' style={{ width: '25px' }} />
-                <p> {usersData[i].pseudo} </p>
-                <FollowUser followId={usersData[i]._id} />
-              </div>
-            );
+            if (user === usersData[i]._id) {
+              return (
+                <div key={user}>
+                  <img src={usersData[i].pictureUrl} alt='?' style={{ width: '25px' }} />
+                  <p> {usersData[i].pseudo} </p>
+                  <FollowUser followId={usersData[i]._id} />
+                </div>
+              );
+            }
           }
           return null;
         })}
