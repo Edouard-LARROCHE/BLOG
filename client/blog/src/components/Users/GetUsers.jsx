@@ -23,6 +23,7 @@ const GetUsers = () => {
             if (user === usersData[i]._id);
             return (
               <div key={user}>
+                <img src={usersData[i].pictureUrl} alt='?' style={{ width: '25px' }} />
                 <p> {usersData[i].pseudo} </p>
                 <FollowUser followId={usersData[i]._id} />
               </div>
