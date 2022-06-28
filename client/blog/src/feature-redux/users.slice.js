@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const usersSlice = createSlice({
   name: 'users',
-  initialState: {},
+  initialState: [],
   reducers: {
     getUsersData: (state, action) => {
       return action.payload;

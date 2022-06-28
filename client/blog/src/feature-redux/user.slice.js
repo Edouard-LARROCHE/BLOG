@@ -8,6 +8,12 @@ export const userSlice = createSlice({
     getUserData: (state, action) => {
       return action.payload;
     },
+    followUserId: (state, action) => {
+      return {
+        ...state,
+        following: [action.payload.idToFollow, ...state.following],
+      };
+    },
   },
 });
 
@@ -20,5 +26,17 @@ export const getUser = (uid) => async (dispatch) => {
   }
 };
 
-export const { getUserData } = userSlice.actions;
+export const followUser = (followerId, idToFollow) => (dispatch) => {
+  axios({
+    method: 'patch',
+    url: `${process.env.REACT_APP_API}/user/follow/` + followerId,
+    data: { idToFollow },
+  })
+    .then(() => {
+      dispatch(followUserId({ idToFollow }));
+    })
+    .catch((err) => console.log(err));
+};
+
+export const { getUserData, followUserId } = userSlice.actions;
 export default userSlice.reducer;
