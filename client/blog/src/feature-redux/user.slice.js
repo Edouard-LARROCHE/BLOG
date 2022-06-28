@@ -26,7 +26,7 @@ export const getUser = (uid) => async (dispatch) => {
   }
 };
 
-export const followUser = (followerId, idToFollow) => async (dispatch) => {
+export const followUser = (followerId, idToFollow) => (dispatch) => {
   axios({
     method: 'patch',
     url: `${process.env.REACT_APP_API}/user/follow/` + followerId,
