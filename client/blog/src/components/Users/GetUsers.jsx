@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import FollowUser from './FollowUser';
+import GetUserPosts from './GetUserPosts';
 
 const GetUsers = () => {
   const usersData = useSelector((state) => state.users);
@@ -30,6 +31,7 @@ const GetUsers = () => {
                   />
                   <p> {usersData[i].pseudo} </p>
                   <FollowUser followId={usersData[i]._id} />
+                  <GetUserPosts usersDataId={usersData[i]._id} />
                 </div>
               );
             }
