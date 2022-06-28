@@ -14,6 +14,12 @@ export const userSlice = createSlice({
         following: [action.payload.idToFollow, ...state.following],
       };
     },
+    unFollowUserId: (state, action) => {
+      return {
+        ...state,
+        following: state.following.filter((id) => id !== action.payload.idToUnfollow),
+      };
+    },
   },
 });
 
@@ -38,5 +44,17 @@ export const followUser = (followerId, idToFollow) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const { getUserData, followUserId } = userSlice.actions;
+export const unFollowUser = (followerId, idToUnfollow) => (dispatch) => {
+  axios({
+    method: 'patch',
+    url: `${process.env.REACT_APP_API}/user/unfollow/` + followerId,
+    data: { idToUnfollow },
+  })
+    .then(() => {
+      dispatch(unFollowUserId({ idToUnfollow }));
+    })
+    .catch((err) => console.log(err));
+};
+
+export const { getUserData, followUserId, unFollowUserId } = userSlice.actions;
 export default userSlice.reducer;
