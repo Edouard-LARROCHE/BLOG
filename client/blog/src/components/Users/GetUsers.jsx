@@ -10,7 +10,7 @@ const GetUsers = () => {
   useEffect(() => {
     let array = [];
     usersData.map((users) => {
-      if (users._id !== userData._id && !users.followers.includes(userData._id)) return array.push(users._id);
+      if (users._id !== userData._id) return array.push(users._id);
       return setFollowId(array);
     });
   }, [userData._id, usersData]);
